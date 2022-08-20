@@ -1,11 +1,12 @@
 {
   "name": "nodejs-practise",
   "version": "1.0.0",
-  "description": "group-1",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "cross-env vadym=borsh olga=pasta node server.js",
-    "dev": "cross-env NODE_ENV=development vadym=borsh olga=pasta nodemon server.js"
+    "start": "cross-env NODE_ENV=production node backend/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon backend/server.js",
+    "client": "npm start --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
   "dependencies": {
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.5.2",
     "nodemon": "^2.0.19"
   }
 }
