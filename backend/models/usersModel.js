@@ -14,6 +14,9 @@ const userSchema = Schema(
       type: String,
       required: [true, "Mongoose: User password is required!"],
     },
+    userMessage: {
+      type: String,
+    },
     token: {
       type: String,
     },

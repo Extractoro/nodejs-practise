@@ -1,0 +1,20 @@
+    <h1>{{msg}}</h1>
+    <form method="post" action="send">
+        {{!-- <form method="post" action="https://www.olha.com"> --}}
+        <div class="row">
+            <div class="six columns">
+                <label for="id_name">Your name</label>
+                <input class="u-full-width" name="userName" type="text" placeholder="name" id="id_name">
+            </div>
+            <div class="six columns">
+                <label for="id_email">Your email</label>
+                <input class="u-full-width" name="userEmail" type="email" placeholder="test@mailbox.com" id="id_email">
+            </div>
+
+        </div>
+        <label for="id_message">Message</label>
+        <textarea class="u-full-width" name="userMessage" placeholder="Hi Dave …" id="id_message"></textarea>
+
+        <input class="button-primary" type="submit" value="Submit">
+    </form>
+    

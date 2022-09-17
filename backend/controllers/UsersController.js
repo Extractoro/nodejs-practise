@@ -4,6 +4,8 @@ const User = require("../models/usersModel");
 const jwt = require("jsonwebtoken");
 const Role = require("../models/rolesModel");
 
+const { validationResult } = require("express-validator");
+
 class UsersController {
   // 1. Робимо валідацію данних
   // 2. Шукаємо, перевіряємо чи є такий користувач в БД
@@ -19,6 +21,12 @@ class UsersController {
       res.status(400);
       throw new Error("Please add all fields");
     }
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     const isExits = await User.findOne({ userEmail });
     if (isExits) {
       res.status(400);
@@ -110,9 +118,9 @@ class UsersController {
     res.send(req.user);
   });
 
-    generateToken = (payload) => {
-        const { id, roles } = payload;
-    return jwt.sign({id, roles}, process.env.JWT_SECRET, { expiresIn: "8h" });
+  generateToken = (payload) => {
+    const { id, roles } = payload;
+    return jwt.sign({ id, roles }, process.env.JWT_SECRET, { expiresIn: "8h" });
   };
 }
 
